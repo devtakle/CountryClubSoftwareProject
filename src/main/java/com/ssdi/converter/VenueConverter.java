@@ -3,7 +3,7 @@ package com.ssdi.converter;
 import java.util.stream.Collectors;
 
 import com.ssdi.dto.VenueDto;
-import com.ssdi.entity.Venue;
+import com.ssdi.model.Venue;
 
 public class VenueConverter {
 	public static Venue dtoToEntity(VenueDto venueDto) {

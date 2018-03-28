@@ -1,7 +1,7 @@
 package com.ssdi.converter;
 
 import com.ssdi.dto.ActivityDto;
-import com.ssdi.entity.Activity;
+import com.ssdi.model.Activity;
 
 public class ActivityConverter {
 	public static Activity dtoToEntity(ActivityDto ActivityDto) {

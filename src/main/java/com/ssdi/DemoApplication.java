@@ -1,4 +1,4 @@
-package com.ssdi.demo;
+package com.ssdi;
 
 import java.util.Arrays;
 
@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.example.demo.entity.Activity;
-import com.example.demo.entity.Venue;
-import com.example.demo.repository.VenueRepository;
+import com.ssdi.dao.VenueRepository;
+import com.ssdi.model.Activity;
+import com.ssdi.model.Venue;
+
+
 
 @SpringBootApplication
 public class DemoApplication {
@@ -24,4 +26,5 @@ public class DemoApplication {
 		venue.setActivitys(Arrays.asList(new Activity(""), new Activity("js")));
 		venue= venueRepository.save(venue);
 	
+}
 }

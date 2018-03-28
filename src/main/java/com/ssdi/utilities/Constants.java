@@ -1,4 +1,4 @@
-package com.ssdi.utils;
+package com.ssdi.utilities;
 
 public interface Constants {
 	static final String GET_USER_BY_ID = "/getVenue/{venueId}";

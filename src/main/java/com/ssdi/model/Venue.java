@@ -1,6 +1,7 @@
-package com.ssdi.entity;
+package com.ssdi.model;
 
 import javax.persistence.*;
+
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;

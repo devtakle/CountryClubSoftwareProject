@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ssdi.dto.VenueDto;
 import com.ssdi.service.VenueService;
-import com.ssdi.utils.Constants;
+import com.ssdi.utilities.Constants;
 
 @RequestMapping("/venue")
 @RestController

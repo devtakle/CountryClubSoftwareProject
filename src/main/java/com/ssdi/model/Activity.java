@@ -1,4 +1,4 @@
-package com.ssdi.entity;
+package com.ssdi.model;
 
 import javax.persistence.*;
 

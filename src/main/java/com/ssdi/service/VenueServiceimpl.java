@@ -1,8 +1,8 @@
-package com.ssdi.service.impl;
+package com.ssdi.service;
 
 import com.ssdi.converter.VenueConverter;
+import com.ssdi.dao.VenueRepository;
 import com.ssdi.dto.VenueDto;
-import com.ssdi.repository.VenueRepository;
 import com.ssdi.service.VenueService;
 
 import java.util.List;
