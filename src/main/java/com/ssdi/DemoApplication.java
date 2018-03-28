@@ -1,4 +1,4 @@
-package com.ssdi.project;
+package com.ssdi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
