@@ -20,17 +20,27 @@ public class RegisterServiceImpl implements RegisterService {
 	
 	@Override
 	@Transactional
-	public void save(MemberLogin memberLogin) {
+	public MemberLogin save(MemberLogin memberLogin) {
 		System.out.println(memberLogin.getId()+", "+memberLogin.getEmail());
-		memberLoginDao.saveAndFlush(memberLogin);
+		return memberLoginDao.save(memberLogin);
 		
 	}
-
+	@Override
+    public void setLoginRepository(MemberLoginDAO memberLoginDao) {
+    	this.memberLoginDao = memberLoginDao;
+    }
+	@Override
+	public void setMemberRepository(MemberDao memberDao) {
+    	this.memberDao = memberDao;
+    }
+    
 	@Override
 	public boolean validate(MemberLogin memberLogin) {
+		
 		Member member = memberDao.findById(memberLogin.getId());
+		
 		if(member == null) {
-			System.out.println("false");
+			System.out.println("member is null false "+memberLogin.getId());
 			return false;
 		}
 		
@@ -40,6 +50,11 @@ public class RegisterServiceImpl implements RegisterService {
 		}
 		System.out.println("false");
 		return false;
+	}
+
+	@Override
+	public boolean exists(MemberLogin memberLogin) {
+		return memberLoginDao.exists(memberLogin.getEmail());
 	}
 
 }
