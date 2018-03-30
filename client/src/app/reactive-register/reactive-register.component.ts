@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MemberLogin} from '../MemberLogin';
 import { FormGroup, FormControl,Validators} from '@angular/forms';
 import {RegisterService} from '../register.service';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-reactive-register',
@@ -14,7 +15,8 @@ export class ReactiveRegisterComponent implements OnInit {
   checkExists:Boolean = false;
   checkMismatch:Boolean = false;
   memberLoginReturned:MemberLogin;
-  constructor(private registerService:RegisterService) {
+
+  constructor(private registerService:RegisterService,private router:Router) {
    }
    addMember(){
      console.log(this.form.value);
@@ -33,6 +35,9 @@ export class ReactiveRegisterComponent implements OnInit {
          console.log("exists");
          this.checkExists = true;
 
+       }
+       else if(this.memberLoginReturned.id != "-99" && this.memberLoginReturned.id != "-999"){
+         this.router.navigate(['/login']);
        }
 
      } );

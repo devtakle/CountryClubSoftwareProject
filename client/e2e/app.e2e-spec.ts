@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('ssdi-project App', () => {
+describe('test-login App', () => {
   let page: AppPage;
 
   beforeEach(() => {

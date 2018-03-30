@@ -1,17 +1,17 @@
 <form [formGroup]="form" (ngSubmit) = "addMember()">
   <div class="form-group">
     <label for="id">
-      Id:
+      MemberId:
     </label>
     <input type="text"
     class = "form-control"
     formControlName = "id"
     name="">
   </div>
-  <div *ngIf = "form.get('id').hasError('required') "  >
+  <div *ngIf = "form.get('id').hasError('required') " class="alert alert-danger" >
     Please enter id
   </div>
-  <div class="form-group">
+  <div class="form-group" >
     <label for="email">
       Email:
     </label>
@@ -20,7 +20,7 @@
     formControlName = "email"
     name="">
   </div>
-    <div *ngIf = "form.get('email').hasError('required') "  >
+    <div *ngIf = "form.get('email').hasError('required') "  class="alert alert-danger">
       Please enter email
     </div>
     <div *ngIf = "form.get('email').hasError('email') && !form.get('email').touched "  >
@@ -43,7 +43,7 @@
     formControlName = "password"
     name="">
   </div>
-  <div *ngIf = "form.get('password').hasError('required') "  >
+  <div *ngIf = "form.get('password').hasError('required') " class="alert alert-danger" >
     Please enter password
   </div>
   <button type="submit" [disabled]="form.invalid" name="button"> Create Account</button>
