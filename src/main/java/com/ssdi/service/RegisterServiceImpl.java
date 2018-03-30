@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ssdi.dao.MemberDao;
-import com.ssdi.dao.MemberLoginDAO;
+import com.ssdi.dao.MemberLoginDao;
 import com.ssdi.model.Member;
 import com.ssdi.model.MemberLogin;
 
 @Service("registerService")
 public class RegisterServiceImpl implements RegisterService {
 	@Autowired
-    MemberLoginDAO memberLoginDao;
+    MemberLoginDao memberLoginDao;
 	@Autowired
     MemberDao memberDao;
 	
@@ -26,7 +26,7 @@ public class RegisterServiceImpl implements RegisterService {
 		
 	}
 	@Override
-    public void setLoginRepository(MemberLoginDAO memberLoginDao) {
+    public void setLoginRepository(MemberLoginDao memberLoginDao) {
     	this.memberLoginDao = memberLoginDao;
     }
 	@Override

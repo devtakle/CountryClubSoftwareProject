@@ -5,9 +5,9 @@ import com.ssdi.model.Activity;
 
 public class ActivityConverter {
 	public static Activity dtoToEntity(ActivityDto ActivityDto) {
-		Activity Activity = new Activity(ActivityDto.getActivityName(), null);
-		Activity.setActivityId(ActivityDto.getActivityId());
-		return Activity;
+		Activity activity = new Activity(ActivityDto.getActivityName(), -1);
+		activity.setActivityId(ActivityDto.getActivityId());
+		return activity;
 	}
 
 	public static ActivityDto entityToDto(Activity activity) {

@@ -15,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.ssdi.dao.MemberDao;
-import com.ssdi.dao.MemberLoginDAO;
+import com.ssdi.dao.MemberLoginDao;
 import com.ssdi.model.Member;
 import com.ssdi.model.MemberLogin;
 
@@ -23,7 +23,7 @@ import com.ssdi.model.MemberLogin;
 @SpringBootTest
 public class RegisterServiceImplTest {
     @Mock
-    MemberLoginDAO memberLoginDao;
+    MemberLoginDao memberLoginDao;
     @Mock
     MemberDao memberDao;
     private RegisterService regService;
@@ -32,7 +32,7 @@ public class RegisterServiceImplTest {
     @Before
     public void setup() {
     	regService = new RegisterServiceImpl();
-    	memberLoginDao = mock(MemberLoginDAO.class);
+    	memberLoginDao = mock(MemberLoginDao.class);
     	regService.setLoginRepository(memberLoginDao);
     	
     	/*   

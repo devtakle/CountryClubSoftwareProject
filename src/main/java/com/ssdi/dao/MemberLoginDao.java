@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.ssdi.model.MemberLogin;
 @Repository("memberLoginDao")
-public interface MemberLoginDAO extends JpaRepository<MemberLogin, String>{
+public interface MemberLoginDao extends JpaRepository<MemberLogin, String>{
 	
 }

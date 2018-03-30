@@ -3,13 +3,13 @@ package com.ssdi.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ssdi.dao.MemberLoginDAO;
+import com.ssdi.dao.MemberLoginDao;
 import com.ssdi.model.MemberLogin;
 
 @Service
 public class MemberLoginService implements IMemberLoginService {
 	@Autowired
-	private MemberLoginDAO memberLoginDAO; 
+	private MemberLoginDao memberLoginDAO; 
 	
 	public String login(String username,String password) {
 		

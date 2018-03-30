@@ -14,26 +14,26 @@ public class Venue implements Serializable{
 	@Column
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
-	private Integer venueId;
+	private Integer id;
     @Column
-    private String venueName;
+    private String name;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Activity> activitys= new LinkedList<>();
 
     public Integer getVenueId() {
-        return venueId;
+        return id;
     }
 
     public void setVenueId(Integer venueId) {
-        this.venueId = venueId;
+        this.id = venueId;
     }
 
     public String getVenueName() {
-        return venueName;
+        return name;
     }
 
     public void setVenueName(String venueName) {
-        this.venueName = venueName;
+        this.name = venueName;
     }
 
     public List<Activity> getActivitys() {
@@ -48,7 +48,7 @@ public class Venue implements Serializable{
     }
 
     public Venue(String venueName, List<Activity> activitys) {
-        this.venueName = venueName;
+        this.name = venueName;
         this.activitys = activitys;
     }
 }

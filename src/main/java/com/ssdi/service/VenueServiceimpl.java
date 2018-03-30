@@ -1,7 +1,7 @@
 package com.ssdi.service;
 
 import com.ssdi.converter.VenueConverter;
-import com.ssdi.dao.VenueRepository;
+import com.ssdi.dao.VenueDao;
 import com.ssdi.dto.VenueDto;
 import com.ssdi.service.VenueService;
 
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class VenueServiceimpl implements VenueService {
 	@Autowired
-	VenueRepository venueRepository;
+	VenueDao venueRepository;
 
 	@Override
 	public VenueDto getVenueById(Integer venueId) {

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.ssdi.dao.VenueRepository;
+import com.ssdi.dao.VenueDao;
 import com.ssdi.model.Activity;
 import com.ssdi.model.Venue;
 
@@ -16,7 +16,7 @@ import com.ssdi.model.Venue;
 public class DemoApplication {
 
 	@Autowired
-	VenueRepository venueRepository;
+	VenueDao venueRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
