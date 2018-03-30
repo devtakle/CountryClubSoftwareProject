@@ -17,15 +17,19 @@ public class RegisterController {
     RegisterService registerService;
 	
 	@RequestMapping(value ="/register",method= RequestMethod.POST,produces = "application/json")
-	public void registerMember(@RequestBody MemberLogin memberLogin) throws InvalidIdOrEmailException {
+	public MemberLogin registerMember(@RequestBody MemberLogin memberLogin) throws InvalidIdOrEmailException {
 		System.out.println(memberLogin.getId()+", "+memberLogin.getEmail());
+		if(registerService.exists(memberLogin)) {
+			memberLogin.setId(-99);
+		}
 		if(!registerService.validate(memberLogin)) {
-			throw new InvalidIdOrEmailException("Email or id is invalid");
+			memberLogin.setId(-9999);
 		}
 		else {
 			registerService.save(memberLogin);
 		}
+		return memberLogin;
 		
-		
+	
 	}
 }
