@@ -7,7 +7,6 @@ import{Routes,RouterModule } from  '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { RegisterComponent } from './register/register.component';
 import { MenuComponent } from './menu/menu.component';
 import { ActivitiesComponent } from './activities/activities.component';
 import { ReactiveRegisterComponent } from './reactive-register/reactive-register.component';
@@ -26,7 +25,6 @@ const ROUTES:Routes = [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent,
     MenuComponent,
     ActivitiesComponent,
     ReactiveRegisterComponent

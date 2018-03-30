@@ -20,12 +20,14 @@
     formControlName = "email"
     name="">
   </div>
+  <div  *ngIf = " form.get('email').touched">
     <div *ngIf = "form.get('email').hasError('required') "  class="alert alert-danger">
       Please enter email
     </div>
     <div *ngIf = "form.get('email').hasError('email') && !form.get('email').touched "  >
       Plase enter valid email
     </div>
+  </div>
 
   <div *ngIf="checkExists" class="alert alert-danger">
       Account already exists
