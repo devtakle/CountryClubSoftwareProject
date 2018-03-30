@@ -15,16 +15,12 @@ import com.ssdi.model.Venue;
 @SpringBootApplication
 public class DemoApplication {
 
-	@Autowired
-	VenueDao venueRepository;
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
-	public void setupDbWithData(){
-		Venue venue= new Venue("Gold", null);
-		venue.setActivitys(Arrays.asList(new Activity(""), new Activity("js")));
-		venue= venueRepository.save(venue);
+	
 	
 }
-}
+

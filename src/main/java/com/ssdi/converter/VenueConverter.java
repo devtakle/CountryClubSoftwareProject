@@ -7,15 +7,13 @@ import com.ssdi.model.Venue;
 
 public class VenueConverter {
 	public static Venue dtoToEntity(VenueDto venueDto) {
-		Venue venue = new Venue(venueDto.getVenueName(), null);
+		Venue venue = new Venue(venueDto.getVenueName());
 		venue.setVenueId(venueDto.getVenueId());
-		venue.setActivitys(venueDto.getActivityDtos().stream().map(ActivityConverter::dtoToEntity).collect(Collectors.toList()));
 		return venue;
 	}
 
 	public static VenueDto entityToDto(Venue venue) {
 		VenueDto venueDto = new VenueDto(venue.getVenueId(), venue.getVenueName(), null);
-		venueDto.setActivityDtos(venue.getActivitys().stream().map(ActivityConverter::entityToDto).collect(Collectors.toList()));
 		return venueDto;
 	}
 }

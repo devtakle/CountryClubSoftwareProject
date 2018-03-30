@@ -10,7 +10,7 @@ public class Activity {
 	private Integer id;
     @Column
     private String name;
-    @ManyToOne
+    @Column
     private int venueId;
 
     public Activity(String activityName) {
