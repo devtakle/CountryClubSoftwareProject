@@ -22,8 +22,7 @@ public class RegisterServiceImpl implements RegisterService {
 	@Transactional
 	public MemberLogin save(MemberLogin memberLogin) {
 		System.out.println(memberLogin.getId()+", "+memberLogin.getEmail());
-		return memberLoginDao.save(memberLogin);
-		
+		return memberLoginDao.save(memberLogin);	
 	}
 	@Override
     public void setLoginRepository(MemberLoginDao memberLoginDao) {
@@ -51,7 +50,7 @@ public class RegisterServiceImpl implements RegisterService {
 		System.out.println("false");
 		return false;
 	}
-
+    
 	@Override
 	public boolean exists(MemberLogin memberLogin) {
 		return memberLoginDao.exists(memberLogin.getEmail());

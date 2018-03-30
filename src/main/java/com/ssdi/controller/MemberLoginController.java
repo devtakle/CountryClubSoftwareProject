@@ -16,8 +16,16 @@ import com.ssdi.utilities.TokenGenerator;
 @RestController
 public class MemberLoginController {
 	@Autowired
-	IMemberLoginService memberloginService;
+	private IMemberLoginService memberloginService;
 	
+
+	public IMemberLoginService getMemberloginService() {
+		return memberloginService;
+	}
+
+	public void setMemberloginService(IMemberLoginService memberloginService) {
+		this.memberloginService = memberloginService;
+	}
 
 	@RequestMapping(method = RequestMethod.GET ,value = "/login/{email}/{password}")	
 	public LoginDto login(@PathVariable("email") String email,@PathVariable("password") String password)  {

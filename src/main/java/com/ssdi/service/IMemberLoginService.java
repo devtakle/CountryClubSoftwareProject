@@ -1,5 +1,6 @@
 package com.ssdi.service;
 
+import com.ssdi.dao.MemberLoginDao;
 import com.ssdi.utilities.InvalidTokenException;
 
 public interface IMemberLoginService {
@@ -14,6 +15,8 @@ public interface IMemberLoginService {
 	void logout(String token) ;
 	
 	boolean isValidToken(String token);
+
+	void setLoginRepository(MemberLoginDao memberLoginDao);
 	
 
 	

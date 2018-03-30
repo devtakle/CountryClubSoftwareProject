@@ -10,7 +10,10 @@ import com.ssdi.model.MemberLogin;
 public class MemberLoginService implements IMemberLoginService {
 	@Autowired
 	private MemberLoginDao memberLoginDAO; 
-	
+	@Override
+    public void setLoginRepository(MemberLoginDao memberLoginDao) {
+    	this.memberLoginDAO = memberLoginDao;
+    }
 	public String login(String username,String password) {
 		
 		return"Welcome"+" "+username+"-"+password;
