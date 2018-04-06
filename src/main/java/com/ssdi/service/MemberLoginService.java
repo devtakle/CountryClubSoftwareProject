@@ -51,7 +51,7 @@ public class MemberLoginService implements IMemberLoginService {
 	@Override
 	public boolean isValidToken(String token) {
 		boolean isValidToken = false;
-		if(token.equals(memberLoginDAO.findAll().iterator().next().getToken())){
+		if(memberLoginDAO.findByToken(token) != null){
 			isValidToken = true;
 			System.out.println("your token is valid");
 		}
