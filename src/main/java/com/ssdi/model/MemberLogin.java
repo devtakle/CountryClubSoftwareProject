@@ -12,8 +12,8 @@ public class MemberLogin {
 	@Id
 	@Column(name = "email")
 	private String email;
-	@Column(name = "password")
-	private String password;
+	@Column(name = "pass")
+	private String pass;
 	@Column(name = "token")
 	private String token;
 	public String getEmail() {
@@ -29,7 +29,7 @@ public class MemberLogin {
 		this.email = email;
 	}
 	public String getPassword() {
-		return password;
+		return pass;
 	}
 	public String getToken() {
 		return token;
@@ -38,7 +38,7 @@ public class MemberLogin {
 		this.token = token;
 	}
 	public void setPassword(String password) {
-		this.password = password;
+		this.pass = password;
 	}
 
 }

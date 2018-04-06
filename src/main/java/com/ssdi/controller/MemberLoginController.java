@@ -33,8 +33,8 @@ public class MemberLoginController {
 		Boolean isPrsesnt  = memberloginService.isValidUser(email);
 		//invalid username
 		if(!isPrsesnt) {
-			//authenticationMessage = "Username Name is not regestered";	
-			loginDto.setAuthenticationMessage("Username Name is not regestered");
+			//authenticationMessage = "Username Name is not registered";	
+			loginDto.setAuthenticationMessage("Username Name is not registered");
 		}
 		//valid username
 		else {

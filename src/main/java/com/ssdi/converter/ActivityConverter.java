@@ -4,9 +4,10 @@ import com.ssdi.dto.ActivityDto;
 import com.ssdi.model.Activity;
 
 public class ActivityConverter {
-	public static Activity dtoToEntity(ActivityDto ActivityDto) {
-		Activity activity = new Activity(ActivityDto.getActivityName(), -1);
-		activity.setActivityId(ActivityDto.getActivityId());
+	public static Activity dtoToEntity(ActivityDto activityDto) {
+		Activity activity = new Activity();
+		activity.setActivityId(activityDto.getActivityId());
+		activity.setActivityName(activityDto.getActivityName());
 		return activity;
 	}
 

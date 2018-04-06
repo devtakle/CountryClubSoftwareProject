@@ -7,45 +7,24 @@ public class Activity {
     @Column
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
-	private Integer id;
+	private int id;
     @Column
-    private String name;
-    @Column
-    private int venueId;
+    private String activity_name;
 
-    public Activity(String activityName) {
-		this.name = activityName;
-	}
-
-	public Integer getActivityId() {
+	public int getActivityId() {
         return id;
     }
 
-    public void setActivityId(Integer activityId) {
+    public void setActivityId(int activityId) {
         this.id = activityId;
     }
 
     public String getActivityName() {
-        return name;
+        return activity_name;
     }
 
     public void setActivityName(String activityName) {
-        this.name = activityName;
+        this.activity_name = activityName;
     }
 
-    public int getVenue() {
-        return venueId;
-    }
-
-    public void setVenue(int venueId) {
-        this.venueId = venueId;
-    }
-
-    public Activity() {
-    }
-
-    public Activity(String activityName, int venueId) {
-        this.name = activityName;
-        this.venueId = venueId;
-    }
 }

@@ -14,9 +14,9 @@ public class Venue implements Serializable{
 	@Column
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
-	private Integer id;
+	private int id;
     @Column
-    private String name;
+    private String venue_name;
 
     public Integer getVenueId() {
         return id;
@@ -27,11 +27,11 @@ public class Venue implements Serializable{
     }
 
     public String getVenueName() {
-        return name;
+        return venue_name;
     }
 
     public void setVenueName(String venueName) {
-        this.name = venueName;
+        this.venue_name = venueName;
     }
 
     
@@ -39,6 +39,6 @@ public class Venue implements Serializable{
     }
 
     public Venue(String venueName) {
-        this.name = venueName;
+        this.venue_name = venueName;
     }
 }

@@ -36,7 +36,7 @@ export class ReactiveRegisterComponent implements OnInit {
          this.checkExists = true;
 
        }
-       else if(this.memberLoginReturned.id != "-99" && this.memberLoginReturned.id != "-999"){
+       else {
          this.router.navigate(['/login']);
        }
 
