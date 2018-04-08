@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
 import { ActivitiesComponent } from './activities/activities.component';
 import { ReactiveRegisterComponent } from './reactive-register/reactive-register.component';
+import { DetailedActvitiesComponent } from './detailed-actvities/detailed-actvities.component';
 
 const ROUTES:Routes = [
   //{path:'',component:HomeComponent},
@@ -17,7 +18,8 @@ const ROUTES:Routes = [
   {path:'login',component:LoginComponent},
   {path:'register',component:ReactiveRegisterComponent},
   {path:'menu',component:MenuComponent},
-  {path:'activities',component:ActivitiesComponent}
+  {path:'activities',component:ActivitiesComponent},
+  {path:'activities/:id',component:DetailedActvitiesComponent}
 ]
 
 @NgModule({
@@ -27,7 +29,8 @@ const ROUTES:Routes = [
     HomeComponent,
     MenuComponent,
     ActivitiesComponent,
-    ReactiveRegisterComponent
+    ReactiveRegisterComponent,
+    DetailedActvitiesComponent
   ],
   imports: [
     BrowserModule,

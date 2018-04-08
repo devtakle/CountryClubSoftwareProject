@@ -14,10 +14,10 @@ public class ActivityScheduleService implements IActivityScheduleService {
 	@Autowired
     ActivityScheduleDao activityScheduleDao;
 	@Override
-	public List<ActivitySchedule> getByActivityId(int activity_id) {
+	public List<ActivityScheduleDto> getByActivityId(int activity_id) {
 		List<ActivitySchedule> list = activityScheduleDao.findByActivityId(activity_id);
 		List<ActivityScheduleDto> result = ActivityScheduleConverter.getDtoList(list);
-		return list;
+		return result;
 		
 	}
 

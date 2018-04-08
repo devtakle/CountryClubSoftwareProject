@@ -1,0 +1,17 @@
+
+<table class ="table">
+  <tr>
+  <th>Activity name</th>
+  <th>Venue name</th>
+  <th>Start time</th>
+  <th>End time</th>
+</tr>
+<tr *ngFor="let activity of detailedActivities">
+      <th>{{activity.activitiy_name}}</th>
+      <th>{{activity.venue_name}}</th>
+      <th>{{activity.start_at}}</th>
+      <th>{{activity.end_at}}</th>
+      <th><button type="submit" name="button" 
+        class="btn btn-success">Register</button></th>
+    </tr>
+</table>
