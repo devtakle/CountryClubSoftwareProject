@@ -34,6 +34,7 @@ public class ActivityController {
 	}
 	@RequestMapping(value="activities/{activity_id}",method = RequestMethod.GET,produces="application/json")
 	public List<ActivityScheduleDto> getDetailsById(@PathVariable("activity_id") int activity_id,@RequestHeader("token") String token){
+		
 		if(memberLoginService.isValidToken(token)) {
 			return actScheduleService.getByActivityId(activity_id);
 		}
@@ -44,7 +45,8 @@ public class ActivityController {
 	
 	}
 	@RequestMapping(value="activities",method = RequestMethod.GET,produces="application/json")
-	public List<ActivityDto> getAllActivities(@RequestHeader("token") String token){
+	public List<ActivityDto> getAllActivities(@RequestHeader(value="token" ,required =false) String token){
+		
 		if(memberLoginService.isValidToken(token)) {
 			return activityService.getAllActivities();
 		}
