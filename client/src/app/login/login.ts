@@ -1,4 +1,4 @@
-export class Login{
-  authenticationMessage:string;
-  token:string;
+export class Login {
+  authenticationMessage: string;
+  token: string;
 }

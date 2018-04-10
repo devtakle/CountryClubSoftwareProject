@@ -7,18 +7,23 @@ import 'rxjs/add/operator/switchMap';
   selector: 'app-detailed-actvities',
   templateUrl: './detailed-actvities.component.html',
   styleUrls: ['./detailed-actvities.component.css'],
-  providers:[DetailedActivitiesService]
+  providers: [DetailedActivitiesService]
 })
-export class DetailedActvitiesComponent implements OnInit {
-  detailedActivities:ActivitySchedule[];
+export class DetailedActvitiesComponent {
+  detailedActivities: ActivitySchedule[];
 
   constructor(private route: ActivatedRoute,
-    private router: Router,
-    private service: DetailedActivitiesService) { }
+              private router: Router,
+              private service: DetailedActivitiesService) {
 
-  ngOnInit() {
-       this.service.getDetailedActivities(1).subscribe(data =>{this.detailedActivities = data;
-         console.log("*** activity  "+this.detailedActivities);
-       });
+    this.route.params.subscribe(
+      params => {
+        service.getDetailedActivities(params['id'])
+          .subscribe(
+            data => this.detailedActivities = data,
+            error => console.log(error)
+          );
+      });
+
   }
 }

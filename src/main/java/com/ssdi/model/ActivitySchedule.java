@@ -14,8 +14,6 @@ public class ActivitySchedule {
 		@GeneratedValue(strategy = GenerationType.AUTO)
 		@Id
 		private int id;
-	    @Column
-	    private int day_of_week;
 	    @Column 
 	    private String start_at;
 	    @Column 
@@ -26,18 +24,24 @@ public class ActivitySchedule {
 	    @OneToOne
 	    @JoinColumn(name="venue_id", referencedColumnName="id")
 	    private Venue venue;
+	    @OneToOne
+	    @JoinColumn(name="day_of_week", referencedColumnName="id")
+	    private DayOfWeek dayOfWeek;
+		
+	    public DayOfWeek getDayOfWeek() {
+			return dayOfWeek;
+		}
+		public void setDayOfWeek(DayOfWeek dayOfWeek) {
+			this.dayOfWeek = dayOfWeek;
+		}
 		public int getId() {
 			return id;
 		}
 		public void setId(int id) {
 			this.id = id;
 		}
-		public int getDay_of_week() {
-			return day_of_week;
-		}
-		public void setDay_of_week(int day_of_week) {
-			this.day_of_week = day_of_week;
-		}
+	
+		
 		public String getStart_at() {
 			return start_at;
 		}

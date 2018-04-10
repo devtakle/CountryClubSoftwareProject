@@ -8,11 +8,12 @@ import com.ssdi.model.Activity;
 import com.ssdi.model.Venue;
 
 public class ActivityScheduleDto {
-	private int id, day_of_week;
+	private int id;
 	private String start_at, venue_name, activity_name;
     private String end_at;
+    private String day_of_week; 
     public ActivityScheduleDto(int id,  String venue_name, String activity_name,
-    		int day_of_week, String start_at,String end_at) {
+    		String day_of_week, String start_at,String end_at) {
 		super();
 		this.id = id;
 		this.day_of_week = day_of_week;
@@ -24,7 +25,7 @@ public class ActivityScheduleDto {
 	public int getId() {
 		return id;
 	}
-	public int getDay_of_week() {
+	public String getDay_of_week() {
 		return day_of_week;
 	}
 	public String getStart_at() {

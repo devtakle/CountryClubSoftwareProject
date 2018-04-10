@@ -1,5 +1,5 @@
-export class MemberLogin{
-  id:string;
+export class MemberLogin {
+  id: string;
   email: string;
   password: string;
 }
