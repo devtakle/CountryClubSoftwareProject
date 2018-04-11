@@ -1,6 +1,7 @@
 package com.ssdi.controller;
 
 import static org.junit.Assert.*;
+<<<<<<< HEAD
 import static org.mockito.Mockito.mock;
 
 import org.junit.Before;
@@ -18,6 +19,12 @@ public class MemberLoginControllerTest {
 	public void setUp() {
 		memberloginService = mock(IMemberLoginService.class);
 	}
+=======
+
+import org.junit.Test;
+
+public class MemberLoginControllerTest {
+>>>>>>> branch 'master' of git@github.com:devtakle/CountryClubSoftwareProject.git
 
 	@Test
 	public void test() {

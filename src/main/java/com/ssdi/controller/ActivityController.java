@@ -61,4 +61,6 @@ public class ActivityController {
 	public void setActivityService(IActivityService activityService) {
 		this.activityService = activityService;
 	}
+
+
 }
