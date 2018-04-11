@@ -10,33 +10,7 @@ public class Activity {
 	private int id;
     @Column
     private String activity_name;
-<<<<<<< HEAD
 
-	public Activity(int id, String activity_name) {
-		super();
-		this.id = id;
-		this.activity_name = activity_name;
-	}
-	public Activity() {
-		super();
-	}
-
-	public int getActivityId() {
-        return id;
-    }
-
-    public void setActivityId(int activityId) {
-        this.id = activityId;
-    }
-
-    public String getActivityName() {
-        return activity_name;
-    }
-
-    public void setActivityName(String activityName) {
-        this.activity_name = activityName;
-    }
-=======
     @OneToOne
     @JoinColumn(name="category_id", referencedColumnName="id")
     private Category categoryNname;
@@ -61,8 +35,6 @@ public class Activity {
     
 	
 
-	
 
->>>>>>> branch 'master' of git@github.com:devtakle/CountryClubSoftwareProject.git
 
 }

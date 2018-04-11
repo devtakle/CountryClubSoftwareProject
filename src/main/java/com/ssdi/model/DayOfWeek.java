@@ -14,11 +14,7 @@ public class DayOfWeek {
 		private int id;
 	    @Column
 	    private String day_of_week;
-	    
-<<<<<<< HEAD
-	    
-=======
->>>>>>> branch 'master' of git@github.com:devtakle/CountryClubSoftwareProject.git
+	   
 		public int getId() {
 			return id;
 		}

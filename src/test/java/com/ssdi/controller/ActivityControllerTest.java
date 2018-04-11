@@ -51,8 +51,8 @@ public class ActivityControllerTest {
     	actController.setMemberLoginService(memberLoginService);
     	actController.setActivityService(activityService);
     	mockMvc = MockMvcBuilders.standaloneSetup(actController).build();
-    	list.add(new ActivityDto(1,"Badminton"));
-    	list.add(new ActivityDto(2,"Basketball"));
+    	list.add(new ActivityDto(1,"Badminton","Sports"));
+    	list.add(new ActivityDto(2,"Basketball","Sports"));
     	when(activityService.getAllActivities()).thenReturn(list);
     	token = "92957";
     	when(memberLoginService.isValidToken(token)).thenReturn(true);	

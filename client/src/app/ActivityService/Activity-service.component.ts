@@ -11,7 +11,10 @@ export class ActivityService {
   constructor(private http: Http) {}
 
   getActivity(): Observable<any[]> {
-    return this.http.get('http://localhost:8080/activities')
+     const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('token', localStorage.getItem('token'));
+    return this.http.get('http://localhost:8080/activities', {headers: headers})
                     .map(response => response.json())
                     .catch(error => Observable.throw(error.statusText));
   }

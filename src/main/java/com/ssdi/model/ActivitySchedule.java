@@ -40,10 +40,7 @@ public class ActivitySchedule {
 		public void setId(int id) {
 			this.id = id;
 		}
-<<<<<<< HEAD
-	
-=======
->>>>>>> branch 'master' of git@github.com:devtakle/CountryClubSoftwareProject.git
+
 		
 		public String getStart_at() {
 			return start_at;
