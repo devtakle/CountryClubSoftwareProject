@@ -45,15 +45,16 @@ public class ActivityController {
 	
 	}
 	@RequestMapping(value="activities",method = RequestMethod.GET,produces="application/json")
-	public List<ActivityDto> getAllActivities(@RequestHeader(value="token" ,required =false) String token){
+	public List<ActivityDto> getAllActivities(@RequestHeader(value="token" ,required=false) String token){
 		
-		if(memberLoginService.isValidToken(token)) {
+		return activityService.getAllActivities();
+		/*if(memberLoginService.isValidToken(token)) {
 			return activityService.getAllActivities();
 		}
 		else {
 			System.out.println("null");
 			return null;
-		}
+		}*/
 	
 	}
 

@@ -40,7 +40,6 @@ public class ActivitySchedule {
 		public void setId(int id) {
 			this.id = id;
 		}
-	
 		
 		public String getStart_at() {
 			return start_at;
