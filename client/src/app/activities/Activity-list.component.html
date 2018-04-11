@@ -1,0 +1,7 @@
+<table class="table">
+  <tbody>
+  <tr *ngFor="let activity of ActivityList">
+    <td><a [routerLink]="[activity.activityId]">{{activity.activityName}}</a></td>
+  </tr>
+  </tbody>
+</table>

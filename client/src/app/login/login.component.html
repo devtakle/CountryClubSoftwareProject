@@ -1,0 +1,41 @@
+<form novalidate [formGroup] ="form" (ngSubmit)="login()">
+  <div class="form-group">
+      <label for="email">
+        Email:
+      </label>
+      <input
+      type="text"
+      formControlName="email"
+      class="form-control"
+      >
+  </div>
+  <div  *ngIf = " form.get('email').touched && form.get('email').invalid " class="alert alert-danger">
+    <div *ngIf = "form.get('email').hasError('required') "  >
+      Please Enter Email
+    </div>
+    <div *ngIf = "form.get('email').hasError('email') && !form.get('email').touched "  >
+      Plase enter valid email!
+    </div>
+  </div>
+  <div *ngIf ="isInvalidValidEmail" class="alert alert-danger">
+      Username is not regestered
+  </div>
+  <div class="form-group">
+      <label for="password">
+        Password:
+      </label>
+      <input
+      type="text"
+      formControlName="password"
+      class="form-control">
+  </div >
+  <div  *ngIf = " form.get('password').touched && form.get('password').invalid " class="alert alert-danger">
+    <div *ngIf = "form.get('password').hasError('required') "  >
+      Please Enter Password
+    </div>
+  </div>
+  <div *ngIf ="isInvalidPassword" class="alert alert-danger">
+      Incorrect Password Entered
+  </div>
+  <button type="submit" name="button" [disabled]="form.invalid" class="btn btn-success">Submit</button>
+</form>

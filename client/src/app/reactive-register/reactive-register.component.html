@@ -1,0 +1,56 @@
+<form [formGroup]="form" (ngSubmit) = "addMember()">
+  <div class="form-group">
+    <label for="id">
+      MemberId:
+    </label>
+    <input type="text"
+    class = "form-control"
+    formControlName = "id"
+    name="">
+  </div>
+  <div  *ngIf = " form.get('id').touched">
+  <div *ngIf = "form.get('id').hasError('required') " class="alert alert-danger" >
+    Please enter id
+  </div>
+</div>
+  <div class="form-group" >
+    <label for="email">
+      Email:
+    </label>
+    <input type="text"
+    class = "form-control"
+    formControlName = "email"
+    name="">
+  </div>
+  <div  *ngIf = " form.get('email').touched">
+    <div *ngIf = "form.get('email').hasError('required') "  class="alert alert-danger">
+      Please enter email
+    </div>
+    <div *ngIf = "form.get('email').hasError('email') && !form.get('email').touched "  >
+      Plase enter valid email
+    </div>
+  </div>
+
+  <div *ngIf="checkExists" class="alert alert-danger">
+      Account already exists
+  </div>
+  <div *ngIf="checkMismatch" class="alert alert-danger">
+    Username/Id do not match or are not registered
+  </div>
+
+  <div class="form-group">
+    <label for="password">
+      Password:
+    </label>
+    <input type="text"
+    class = "form-control"
+    formControlName = "password"
+    name="">
+  </div>
+  <div  *ngIf = " form.get('password').touched">
+  <div *ngIf = "form.get('password').hasError('required') " class="alert alert-danger" >
+    Please enter password
+  </div>
+</div>
+  <button type="submit" [disabled]="form.invalid" name="button"> Create Account</button>
+</form>
