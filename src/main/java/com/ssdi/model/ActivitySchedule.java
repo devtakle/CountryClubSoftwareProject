@@ -27,7 +27,9 @@ public class ActivitySchedule {
 	    @OneToOne
 	    @JoinColumn(name="day_of_week", referencedColumnName="id")
 	    private DayOfWeek dayOfWeek;
-		
+	    @Column
+	    private int activity_capacity;
+	    
 	    public DayOfWeek getDayOfWeek() {
 			return dayOfWeek;
 		}
@@ -65,6 +67,12 @@ public class ActivitySchedule {
 		}
 		public void setVenue(Venue venue) {
 			this.venue = venue;
+		}
+		public int getActivity_capacity() {
+			return activity_capacity;
+		}
+		public void setActivity_capacity(int activity_capacity) {
+			this.activity_capacity = activity_capacity;
 		}
 		
 
