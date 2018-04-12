@@ -75,7 +75,6 @@ public class ActivityControllerTest {
         .andExpect(jsonPath("$[1].id", is(2)))
         .andExpect(jsonPath("$[0].venue_name", is("court 1")))
         .andExpect(jsonPath("$[1].venue_name", is("court 2")));	
-		
 	}
 
 }

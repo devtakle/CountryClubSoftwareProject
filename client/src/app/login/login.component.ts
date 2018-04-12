@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     this.loginmodel = message;
     console.log('*****' + this.loginmodel.authenticationMessage + '**********');
     console.log('*****' + this.loginmodel.token + '**********');
-    if (this.loginmodel.authenticationMessage == 'Username Name is not regestered') {
+    if (this.loginmodel.authenticationMessage == 'Username Name is not registered') {
       this.isInvalidValidEmail = true;
     }
     if (this.loginmodel.authenticationMessage == 'Wrong Password Entered') {
