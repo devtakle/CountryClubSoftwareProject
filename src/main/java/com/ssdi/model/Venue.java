@@ -17,8 +17,19 @@ public class Venue implements Serializable{
 	private int id;
     @Column
     private String venue_name;
+    
+    @Column
+    private int capacity;
+    
+    public int getVenue_capacity() {
+		return capacity;
+	}
 
-    public Integer getVenueId() {
+	public void setVenue_capacity(int capacity) {
+		this.capacity = capacity;
+	}
+
+	public Integer getVenueId() {
         return id;
     }
 
@@ -41,4 +52,6 @@ public class Venue implements Serializable{
     public Venue(String venueName) {
         this.venue_name = venueName;
     }
+
+	
 }
