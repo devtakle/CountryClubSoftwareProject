@@ -60,7 +60,8 @@ public class ActivityControllerTest {
     }
 	@Test
 	public void testGetAllActivities() throws Exception {
-		mockMvc.perform(get("/activities").header("token", token)).andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+		mockMvc.perform(get("/activities").header("token", token))
+		            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
 	                .andExpect(jsonPath("$", hasSize(2))).andExpect(jsonPath("$[0].activityName", is("Badminton")))
 	                .andExpect(jsonPath("$[1].activityName", is("Basketball")))
 	                .andExpect(jsonPath("$[0].activityId", is(1)))
