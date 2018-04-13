@@ -1,0 +1,22 @@
+<div class="row  " >
+  <ul class="nav">
+    <li class="nav-item"  >
+      <a class="nav-link" routerLink="/menu" >Home</a>
+    </li>
+  <li class="nav-item"  >
+    <a class="nav-link" routerLink="/logout" >Logout</a>
+  </li>
+</ul>
+</div>
+<table class="table">
+  <tbody>
+  <tr>
+    <th>Activity_Name</th>
+    <th>Activity_Category</th>
+  </tr>
+  <tr *ngFor="let activity of ActivityList">
+    <td><a [routerLink]="[activity.activityId]">{{activity.activityName}}</a></td>
+    <td>{{activity.category_Name}}</td>
+  </tr>
+  </tbody>
+</table>
