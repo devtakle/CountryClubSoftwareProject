@@ -20,4 +20,9 @@ public class ActivityService implements IActivityService {
 		return result;
 	}
 
+	public void setActivityDao(ActivityDao activityDao2) {
+		activityDao = activityDao2;
+		
+	}
+
 }
