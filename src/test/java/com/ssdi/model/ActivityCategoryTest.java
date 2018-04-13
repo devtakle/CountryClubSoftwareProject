@@ -12,11 +12,12 @@ import org.junit.Test;
 
 import com.ssdi.dao.ActivityDao;
 
-public class ActivityTest {
+public class ActivityCategoryTest {
 
 	private static ActivityDao mockActivityDao;
 	private static Activity act1;
 	private static Activity act2;
+	private static Category ctg;
 	
 	@Before
 	public void setup()
@@ -29,7 +30,9 @@ public class ActivityTest {
 		act1=new Activity();
 		act1.setActivity_name("Badminton");
 		act1.setId(1);
-		
+		ctg=new Category();
+		ctg.setCategory_name("Outdoor");
+		act1.setCategoryNname(ctg);
 		act2= new Activity();
 		act2.setActivity_name("Volleyball");
 		act2.setId(2);
@@ -40,16 +43,18 @@ public class ActivityTest {
 	}	
 	
 	Activity act;
+	Category cts ;
 	List<Activity> allActivities;
 	
 	@Test
-	public void testGetActivityName() 
+	public void testActivities() 
 	{
 		allActivities = mockActivityDao.findAll();
 		assertEquals(2,allActivities.size());
 		act = allActivities.get(0);
 		assertEquals("Badminton",act.getActivity_name());
 		assertEquals(1,act.getId());
+		assertEquals("Outdoor",act.getCategoryNname().getCategory_name());
 
 	}
 }
