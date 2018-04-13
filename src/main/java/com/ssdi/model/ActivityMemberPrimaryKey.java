@@ -2,6 +2,7 @@ package com.ssdi.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
 
@@ -9,20 +10,22 @@ import javax.validation.constraints.NotNull;
 public class ActivityMemberPrimaryKey implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@NotNull
-	private int activityScheduleId;
+	@Column
+	private int activity_instance_id;
 	@NotNull
-	private int memberId;
+	@Column
+	private int member_id;
 	public int getActivityScheduleId() {
-		return activityScheduleId;
+		return activity_instance_id;
 	}
 	public void setActivityScheduleId(int activityScheduleId) {
-		this.activityScheduleId = activityScheduleId;
+		this.activity_instance_id = activityScheduleId;
 	}
 	public int getMemberId() {
-		return memberId;
+		return member_id;
 	}
 	public void setMemberId(int memberId) {
-		this.memberId = memberId;
+		this.member_id = memberId;
 	}
 	
 

@@ -10,6 +10,7 @@ import com.ssdi.dao.VenueDao;
 import com.ssdi.model.ActivityMember;
 import com.ssdi.model.ActivityMemberPrimaryKey;
 import com.ssdi.model.ActivitySchedule;
+import com.ssdi.model.MemberLogin;
 import com.ssdi.model.Venue;
 
 @Service
@@ -24,17 +25,29 @@ public class RegisterForActivityService implements IRegisterForActivityService {
 	private ActivityScheduleDao activityScheduleDao;
 	
 	/*fetches member id corresponding to token from Login Table*/
+//	public int fetchMemberId(String token) {
+//		//public boolean existsByToken(String token);
+//		//return memberLoginDAO.existsByToken(token);
+//		System.out.println("value of token inside fecthMember--->"+token);
+//		int memberId = 0;
+//		while(memberLoginDAO.findAll().iterator().hasNext()) {
+//			System.out.println("value of present token--->"+memberLoginDAO.findAll().iterator().next().getToken());
+//			if(memberLoginDAO.findAll().iterator().next().getToken().equals(token)) {
+//				memberId =  memberLoginDAO.findAll().iterator().next().getId();
+//				break;
+//			}
+//		}
+//		return memberId;
+//	}
 	public int fetchMemberId(String token) {
-		//System.out.println("value of token inside fecthMember--->"+token);
-		int memberId = 0;
-		while(memberLoginDAO.findAll().iterator().hasNext()) {
-			System.out.println("value of present token--->"+memberLoginDAO.findAll().iterator().next().getToken());
-			if(memberLoginDAO.findAll().iterator().next().getToken().equals(token)) {
-				memberId =  memberLoginDAO.findAll().iterator().next().getId();
-				break;
-			}
+		MemberLogin memberLogin = new MemberLogin();
+		if (memberLoginDAO.existsByToken(token)){
+			memberLogin =  memberLoginDAO.findByToken(token);
+			return memberLogin.getId();
 		}
-		return memberId;
+		else {
+			return 0;
+		}
 	}
 	
 	/*check if user entry is already there in ActivityMember Table*/
