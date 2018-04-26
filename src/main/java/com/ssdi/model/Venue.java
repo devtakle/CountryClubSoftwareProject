@@ -17,8 +17,51 @@ public class Venue implements Serializable{
 	private int id;
     @Column
     private String venue_name;
-    
-    @Column
+    @Column(name = "opening_time")
+    private String openTime;
+    @Column(name = "closing_time")
+    private String closeTime;
+    public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getVenue_name() {
+		return venue_name;
+	}
+
+	public void setVenue_name(String venue_name) {
+		this.venue_name = venue_name;
+	}
+
+	public String getOpenTime() {
+		return openTime;
+	}
+
+	public void setOpenTime(String openTime) {
+		this.openTime = openTime;
+	}
+
+	public String getCloseTime() {
+		return closeTime;
+	}
+
+	public void setCloseTime(String closeTime) {
+		this.closeTime = closeTime;
+	}
+
+	public int getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(int capacity) {
+		this.capacity = capacity;
+	}
+
+	@Column
     private int capacity;
     
     public int getVenue_capacity() {
