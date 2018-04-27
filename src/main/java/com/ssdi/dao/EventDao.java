@@ -9,6 +9,5 @@ import com.ssdi.model.Event;
 
 @Repository("eventDao")
 public interface EventDao extends JpaRepository<Event,Integer> {
-	public List<Event> findByDate(String date);
-
+	public List<Event> findByDateAndVenueId(String date, int venueId);
 }

@@ -25,9 +25,9 @@ public class TemporaryEventService {
 	public TemporaryEvent addEvent(TemporaryEvent event) {
 		return temporaryEventDao.save(event);
 	}
-	public List<String> getEventTimeSlots(List<String> venueTimeSlots, String date) throws ParseException{
+	public List<String> getEventTimeSlots(List<String> venueTimeSlots, String date, int venueId) throws ParseException{
 		List<String> result = new ArrayList<>();
-		List<Event> events = eventDao.findByDate(date);
+		List<Event> events = eventDao.findByDateAndVenueId(date, venueId);
 		DateFormat sdf = new SimpleDateFormat("hh:mm:ss");
 		for(Event event : events) {
 			Date startTime = sdf.parse(event.getStartAt());
@@ -40,10 +40,6 @@ public class TemporaryEventService {
 			}
 		}
 		return result;
-		
-	    
-		
-		
 	}
 	
 	
