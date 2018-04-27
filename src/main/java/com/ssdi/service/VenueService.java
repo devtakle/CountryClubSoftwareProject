@@ -26,11 +26,8 @@ public class VenueService implements IVenueService {
 		Date closeTime = sdf.parse(venue.getCloseTime());
 		Date time = openTime;
 		while (time.getHours() <= closeTime.getHours()) {
-			if (time.getHours() == closeTime.getHours() && time.getMinutes() > closeTime.getMinutes()) {
-				break;
-			}
 			result.add(sdf.format(time));
-			time.setMinutes(time.getMinutes() + 30);
+			time.setHours(time.getHours()+1);
 		}
 		return result;
 	}
