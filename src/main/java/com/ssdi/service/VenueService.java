@@ -21,7 +21,6 @@ public class VenueService implements IVenueService {
 	public List<String> getVenueTimes(int venue_id) throws ParseException {
 		List<String> result = new ArrayList<>();
 		Venue venue = venueDao.findOne(venue_id);
-
 		DateFormat sdf = new SimpleDateFormat("hh:mm:ss");
 		Date openTime = sdf.parse(venue.getOpenTime());
 		Date closeTime = sdf.parse(venue.getCloseTime());
@@ -34,6 +33,5 @@ public class VenueService implements IVenueService {
 			time.setMinutes(time.getMinutes() + 30);
 		}
 		return result;
-
 	}
 }
