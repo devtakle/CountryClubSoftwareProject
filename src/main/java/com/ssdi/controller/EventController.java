@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ssdi.model.MemberLogin;
 import com.ssdi.model.TemporaryEvent;
+import com.ssdi.service.IMemberLoginService;
 import com.ssdi.service.MemberLoginService;
+import com.ssdi.service.MemberService;
 import com.ssdi.service.TemporaryEventService;
 import com.ssdi.service.VenueService;
 import com.ssdi.utilities.NotLoggedInException;
@@ -27,12 +29,40 @@ public class EventController {
 	@Autowired
 	TemporaryEventService tempService;
 	@Autowired
-	MemberLoginService memberLoginService; 
+	IMemberLoginService memberLoginService; 
+	@Autowired 
+	MemberService memberService;
 
+	public VenueService getVenueService() {
+		return venueService;
+	}
+	public void setVenueService(VenueService venueService) {
+		this.venueService = venueService;
+	}
+	public TemporaryEventService getTempService() {
+		return tempService;
+	}
+	public void setTempService(TemporaryEventService tempService) {
+		this.tempService = tempService;
+	}
+	public IMemberLoginService getMemberLoginService() {
+		return memberLoginService;
+	}
+	public void setMemberLoginService(IMemberLoginService memberLoginService) {
+		this.memberLoginService = memberLoginService;
+	}
+	public MemberService getMemberService() {
+		return memberService;
+	}
+	public void setMemberService(MemberService memberService) {
+		this.memberService = memberService;
+	}
 	@RequestMapping(value ="/tempEventAdd",method= RequestMethod.POST)
 	public TemporaryEvent addTemporaryEvent(@RequestBody TemporaryEvent temporaryEvent, 
 			@RequestHeader(value="token") String token) throws NotLoggedInException {
 		if(memberLoginService.isValidToken(token)) {
+		int id = memberLoginService.findMemberId(token);
+		temporaryEvent.setMember(memberService.getById(id));
 		return tempService.addEvent(temporaryEvent);
 		}
 		else {
@@ -45,7 +75,7 @@ public class EventController {
 		if(memberLoginService.isValidToken(token)) {
 			System.out.println("Entered Controller");
 			List<Integer> timeSlots = tempService
-					.getEventTimeSlots(venueService.getVenueTimes(venueId), date, venueId);
+					.getEventTimeSlots(date, venueId);
 			return timeSlots;
 			}
 			else {

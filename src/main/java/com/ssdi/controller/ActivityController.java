@@ -34,7 +34,7 @@ public class ActivityController {
 	}
 	@RequestMapping(value="activities/{activity_id}",method = RequestMethod.GET,produces="application/json")
 	public List<ActivityScheduleDto> getDetailsById(@PathVariable("activity_id") int activity_id,@RequestHeader("token") String token){
-		
+	
 		if(memberLoginService.isValidToken(token)) {
 			return actScheduleService.getByActivityId(activity_id);
 		}

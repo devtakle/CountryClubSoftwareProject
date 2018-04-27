@@ -21,12 +21,14 @@ public class TemporaryEventService {
 	TemporaryEventDao temporaryEventDao;
 	@Autowired
 	EventDao eventDao;
-	
+	@Autowired
+	VenueService venueService;
 	public TemporaryEvent addEvent(TemporaryEvent event) {
 		return temporaryEventDao.save(event);
 	}
-	public List<Integer> getEventTimeSlots(List<String> venueTimeSlots, String date, int venueId) throws ParseException{
+	public List<Integer> getEventTimeSlots( String date, int venueId) throws ParseException{
 		List<Integer> result = new ArrayList<>();
+		List<String> venueTimeSlots = venueService.getVenueTimes(venueId);
 		List<Event> events = eventDao.findByDateAndVenueId(date, venueId);
 		
 		DateFormat sdf = new SimpleDateFormat("HH:mm:ss");
