@@ -21,6 +21,24 @@ public class TemporaryEventService {
 	TemporaryEventDao temporaryEventDao;
 	@Autowired
 	EventDao eventDao;
+	public TemporaryEventDao getTemporaryEventDao() {
+		return temporaryEventDao;
+	}
+	public void setTemporaryEventDao(TemporaryEventDao temporaryEventDao) {
+		this.temporaryEventDao = temporaryEventDao;
+	}
+	public EventDao getEventDao() {
+		return eventDao;
+	}
+	public void setEventDao(EventDao eventDao) {
+		this.eventDao = eventDao;
+	}
+	public VenueService getVenueService() {
+		return venueService;
+	}
+	public void setVenueService(VenueService venueService) {
+		this.venueService = venueService;
+	}
 	@Autowired
 	VenueService venueService;
 	public TemporaryEvent addEvent(TemporaryEvent event) {
@@ -33,12 +51,11 @@ public class TemporaryEventService {
 		
 		DateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 		for(Event event : events) {
-			System.out.println(event.getName());
 			Date startTime = sdf.parse(event.getStartAt());
 			Date endTime = sdf.parse(event.getEndAt());
 			for(String time : venueTimeSlots) {
 				Date availTime = sdf.parse(time);
-				if(availTime.getHours() < startTime.getHours() || availTime.getHours() > endTime.getHours()) {
+				if(availTime.getHours() < startTime.getHours() || availTime.getHours() >= endTime.getHours()) {
 					result.add(availTime.getHours());
 				}
 			}
