@@ -3,6 +3,7 @@ package com.ssdi.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ssdi.dao.MemberDao;
 import com.ssdi.dao.MemberLoginDao;
 import com.ssdi.model.MemberLogin;
 
@@ -51,5 +52,10 @@ public class MemberLoginService implements IMemberLoginService {
 	@Override
 	public boolean isValidToken(String token) {
 		return memberLoginDAO.existsByToken(token);
+	}
+	@Override
+	public int findMemberId(String token) {
+		// TODO Auto-generated method stub
+		return  memberLoginDAO.findByToken(token).getId();
 	}
 }
