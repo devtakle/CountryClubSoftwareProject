@@ -74,7 +74,7 @@ public class ActivityController {
 	@RequestMapping(value="/addActivitySchedule",method = RequestMethod.GET)
 	public void addActivitySchedule(@RequestBody ActivitySchedule activitySchedule, @RequestHeader("token") String token) throws NotLoggedInException{
 		if(managerLoginService.isValidToken(token)) {
-			activitySchedule.setActivity_capacity(activitySchedule.getVenue().getCapacity());
+			activitySchedule.setActivity_capacity(0);
 			actScheduleService.save(activitySchedule);
 		}
 		else {
