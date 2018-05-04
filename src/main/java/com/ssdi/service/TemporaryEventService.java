@@ -19,6 +19,7 @@ import com.ssdi.model.TemporaryEvent;
 public class TemporaryEventService {
 	@Autowired
 	TemporaryEventDao temporaryEventDao;
+	
 	@Autowired
 	EventDao eventDao;
 	public TemporaryEventDao getTemporaryEventDao() {
@@ -61,6 +62,15 @@ public class TemporaryEventService {
 			}
 		}
 		return result;
+	}
+
+	public List<TemporaryEvent> getAll(){
+		return temporaryEventDao.findAll();
+	}
+	public TemporaryEvent remove(int id) {
+		TemporaryEvent event  = temporaryEventDao.findOne(id);
+		temporaryEventDao.delete(id);
+		return event;
 	}
 	
 	

@@ -13,8 +13,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ssdi.model.Event;
 import com.ssdi.model.MemberLogin;
 import com.ssdi.model.TemporaryEvent;
+import com.ssdi.model.Venue;
+import com.ssdi.service.EventService;
+import com.ssdi.service.IManagerLoginService;
 import com.ssdi.service.IMemberLoginService;
 import com.ssdi.service.MemberLoginService;
 import com.ssdi.service.MemberService;
@@ -29,9 +33,13 @@ public class EventController {
 	@Autowired
 	TemporaryEventService tempService;
 	@Autowired
+	EventService eventService;
+	@Autowired
 	IMemberLoginService memberLoginService; 
 	@Autowired 
 	MemberService memberService;
+	@Autowired
+	IManagerLoginService managerLoginService;
 
 	public VenueService getVenueService() {
 		return venueService;
@@ -82,6 +90,41 @@ public class EventController {
 				throw new NotLoggedInException("You are not logged in");
 			}
 		
+		
+	}
+	@RequestMapping(value ="/tempEventAll",method= RequestMethod.GET)
+	public List<TemporaryEvent> getTempEvents(@RequestHeader(value="token") String token) throws ParseException, NotLoggedInException{
+		if(managerLoginService.isValidToken(token)) {
+			List<TemporaryEvent> tempEvents = tempService.getAll();
+			return tempEvents;
+			}
+			else {
+				throw new NotLoggedInException("You are not logged in");
+			}
+		
+		
+	}
+	@RequestMapping(value = "/approveEvent",method = RequestMethod.POST)
+	public void approveEvent(@RequestBody Event event, @RequestHeader(value="token") String token) throws NotLoggedInException {
+		if(managerLoginService.isValidToken(token)) {
+			tempService.remove(event.getId());
+			eventService.addEvent(event);
+			
+			}
+			else {
+				throw new NotLoggedInException("You are not logged in");
+			}
+		
+	}
+	@RequestMapping(value="/venues",method = RequestMethod.GET,produces="application/json")
+	public @ResponseBody List<Venue> getVenues(@RequestHeader(value="token") String token) throws NotLoggedInException{
+		if(managerLoginService.isValidToken(token) || memberLoginService.isValidToken(token)) {
+			return venueService.getAll();
+			
+			}
+			else {
+				throw new NotLoggedInException("You are not logged in");
+			}
 		
 	}
 	

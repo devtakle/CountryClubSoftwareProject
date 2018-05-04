@@ -3,6 +3,7 @@ package com.ssdi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -61,7 +62,6 @@ public class MemberLoginController {
 		//return  authenticationMessage;
 		return  loginDto;
 	}	
-	
 	@RequestMapping(method = RequestMethod.GET ,value = "/logout/{token}")
 	public void logout(@PathVariable("token") String token) throws InvalidTokenException  {
 		//if valid token 

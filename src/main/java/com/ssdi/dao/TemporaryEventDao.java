@@ -8,5 +8,6 @@ import com.ssdi.model.Venue;
 
 @Repository("temporaryEventDao")
 public interface TemporaryEventDao extends JpaRepository<TemporaryEvent, Integer> {
+	
 
 }

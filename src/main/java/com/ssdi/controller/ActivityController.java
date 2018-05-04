@@ -1,10 +1,12 @@
 package com.ssdi.controller;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ssdi.service.IActivityScheduleService;
 import com.ssdi.service.IActivityService;
+import com.ssdi.service.IManagerLoginService;
 import com.ssdi.service.IMemberLoginService;
+import com.ssdi.utilities.NotLoggedInException;
 import com.ssdi.dto.ActivityDto;
 import com.ssdi.dto.ActivityScheduleDto;
 import com.ssdi.model.ActivitySchedule;
@@ -25,6 +29,8 @@ public class ActivityController {
 	private IMemberLoginService memberLoginService;
 	@Autowired
 	private IActivityService activityService;
+	@Autowired
+	IManagerLoginService managerLoginService;
 
 	public void setMemberLoginService(IMemberLoginService memberLoginService) {
 		this.memberLoginService = memberLoginService;
@@ -42,7 +48,6 @@ public class ActivityController {
 			System.out.println("null");
 			return null;
 		}
-	
 	}
 	@RequestMapping(value="activities",method = RequestMethod.GET,produces="application/json")
 	public List<ActivityDto> getAllActivities(@RequestHeader(value="token") String token){
@@ -53,6 +58,27 @@ public class ActivityController {
 		else {
 			System.out.println("null");
 			return null;
+		}
+	}
+	@RequestMapping(value="activities/day/venue",method = RequestMethod.GET)
+	public List<Integer> getAllActivityTimeSlots(@RequestHeader(value="token") 
+	String token,@PathVariable("day") int dayId,@PathVariable("venue") int venueId) throws ParseException, NotLoggedInException{
+		
+		if(managerLoginService.isValidToken(token)) {
+			return actScheduleService.getActivityTimeSlots(dayId, venueId);
+		}
+		else {
+			throw new NotLoggedInException("You are not logged in");
+		}
+	}
+	@RequestMapping(value="/addActivitySchedule",method = RequestMethod.GET)
+	public void addActivitySchedule(@RequestBody ActivitySchedule activitySchedule, @RequestHeader("token") String token) throws NotLoggedInException{
+		if(managerLoginService.isValidToken(token)) {
+			activitySchedule.setActivity_capacity(activitySchedule.getVenue().getCapacity());
+			actScheduleService.save(activitySchedule);
+		}
+		else {
+			throw new NotLoggedInException("You are not logged in");
 		}
 	}
 	public IActivityService getActivityService() {

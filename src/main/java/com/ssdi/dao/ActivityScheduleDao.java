@@ -11,6 +11,6 @@ import com.ssdi.model.ActivitySchedule;
 @Repository("activityScheduleDao")
 public interface ActivityScheduleDao extends JpaRepository<ActivitySchedule, Integer> {
 	public List<ActivitySchedule> findByActivityId(int activity_id);
+	public List<ActivitySchedule> findByDayOfWeekAndVenueId(int day, int venue);
 	
-
 }

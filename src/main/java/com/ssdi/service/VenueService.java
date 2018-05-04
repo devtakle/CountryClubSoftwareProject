@@ -37,7 +37,9 @@ public class VenueService implements IVenueService {
 		System.out.println(result);
 		return result;
 	}
-
+    public List<Venue> getAll(){
+    	return venueDao.findAll();
+    }
 	public VenueDao getVenueDao() {
 		return venueDao;
 	}
