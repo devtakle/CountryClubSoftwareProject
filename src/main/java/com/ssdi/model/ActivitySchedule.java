@@ -26,18 +26,19 @@ public class ActivitySchedule {
 	    private Venue venue;
 	    @OneToOne
 	    @JoinColumn(name="day_of_week", referencedColumnName="id")
-	    private DayOfWeek dayOfWeek;
+	    private DayOfWeek day;
 	    @Column
 	    private int activity_capacity;
 	    
-	    public DayOfWeek getDayOfWeek() {
-			return dayOfWeek;
-		}
-		public void setDayOfWeek(DayOfWeek dayOfWeek) {
-			this.dayOfWeek = dayOfWeek;
-		}
+	 
 		public int getId() {
 			return id;
+		}
+		public DayOfWeek getDay() {
+			return day;
+		}
+		public void setDay(DayOfWeek day) {
+			this.day = day;
 		}
 		public void setId(int id) {
 			this.id = id;

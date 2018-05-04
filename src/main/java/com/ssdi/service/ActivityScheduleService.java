@@ -17,6 +17,7 @@ import com.ssdi.dao.ActivityScheduleDao;
 import com.ssdi.dao.VenueDao;
 import com.ssdi.dto.ActivityScheduleDto;
 import com.ssdi.model.ActivitySchedule;
+import com.ssdi.model.DayOfWeek;
 import com.ssdi.model.Event;
 import com.ssdi.model.Venue;
 @Service("actScheduleService")
@@ -26,6 +27,8 @@ public class ActivityScheduleService implements IActivityScheduleService {
 	ActivityScheduleConverter conv;
 	@Autowired
 	VenueService venueService;
+	@Autowired
+	DayOfWeekService dayofweekService;
 
 	public void setConv(ActivityScheduleConverter conv) {
 		this.conv = conv;
@@ -53,7 +56,8 @@ public class ActivityScheduleService implements IActivityScheduleService {
 	public List<Integer> getActivityTimeSlots( int day, int venueId) throws ParseException{
 		List<Integer> result = new ArrayList<>();
 		List<String> venueTimeSlots = venueService.getVenueTimes(venueId);
-		List<ActivitySchedule> activities = activityScheduleDao.findByDayOfWeekAndVenueId(day, venueId); 
+		DayOfWeek dayWeek = dayofweekService.findById(day);
+		List<ActivitySchedule> activities = activityScheduleDao.findByDayAndVenueId(dayWeek, venueId); 
 		
 		DateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 		for(ActivitySchedule act : activities) {

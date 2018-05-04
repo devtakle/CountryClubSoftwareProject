@@ -1,9 +1,11 @@
 package com.ssdi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.ssdi.dto.LoginDto;
 import com.ssdi.service.IManagerLoginService;
@@ -11,14 +13,11 @@ import com.ssdi.service.IMemberLoginService;
 import com.ssdi.utilities.ITokenGenerator;
 import com.ssdi.utilities.InvalidTokenException;
 import com.ssdi.utilities.TokenGenerator;
-
+@CrossOrigin(origins = "*")
+@RestController
 public class ManagerLoginController {
 	@Autowired
 	private IManagerLoginService managerLoginService;
-	
-
-
-
 	@RequestMapping(method = RequestMethod.GET ,value = "/mgrlogin/{email}/{password}")	
 	public LoginDto login(@PathVariable("email") String email,@PathVariable("password") String password)  {
 		LoginDto loginDto = new LoginDto();

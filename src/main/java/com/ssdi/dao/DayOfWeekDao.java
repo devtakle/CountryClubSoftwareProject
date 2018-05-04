@@ -3,9 +3,10 @@ package com.ssdi.dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.ssdi.model.Venue;
+import com.ssdi.model.DayOfWeek;
 
-@Repository
-public interface VenueDao extends JpaRepository<Venue, Integer>{
-	
+
+@Repository("dayDao")
+public interface DayOfWeekDao extends JpaRepository<DayOfWeek,Integer>{
+
 }

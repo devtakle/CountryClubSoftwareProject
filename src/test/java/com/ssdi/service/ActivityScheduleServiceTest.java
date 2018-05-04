@@ -44,7 +44,7 @@ public class ActivityScheduleServiceTest {
 		a.setId(3);
 		aS.setVenue(v);
 		DayOfWeek dayOfWeek = new DayOfWeek();
-		aS.setDayOfWeek(dayOfWeek);
+		aS.setDay(dayOfWeek);
 		aS.setActivity(a);
 		list.add(aS);
 		ActivityScheduleDto dto = new ActivityScheduleDto(5, "", "", "", "", "");

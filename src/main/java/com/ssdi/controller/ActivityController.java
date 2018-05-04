@@ -60,11 +60,12 @@ public class ActivityController {
 			return null;
 		}
 	}
-	@RequestMapping(value="activities/day/venue",method = RequestMethod.GET)
+	@RequestMapping(value="activities/{day}/{venue}",method = RequestMethod.GET)
 	public List<Integer> getAllActivityTimeSlots(@RequestHeader(value="token") 
 	String token,@PathVariable("day") int dayId,@PathVariable("venue") int venueId) throws ParseException, NotLoggedInException{
-		
+		System.out.println("entered valid token");
 		if(managerLoginService.isValidToken(token)) {
+			System.out.println("entered valid token");
 			return actScheduleService.getActivityTimeSlots(dayId, venueId);
 		}
 		else {

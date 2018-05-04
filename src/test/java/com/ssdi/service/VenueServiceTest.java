@@ -35,6 +35,7 @@ public class VenueServiceTest {
 	public void getVenueTimesTest() throws ParseException {
 		List<String> list = service.getVenueTimes(1);
 		assertEquals(list.size(),5);
+		assertEquals(list.get(1),"10:00:00");
 	}
 	
 }
