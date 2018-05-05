@@ -51,6 +51,13 @@ public class TemporaryEventService {
 		List<Event> events = eventDao.findByDateAndVenueId(date, venueId);
 		
 		DateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+		if(events.size() == 0) {
+			for(String time : venueTimeSlots) {
+				Date availTime = sdf.parse(time);
+					result.add(availTime.getHours());
+				
+			}
+		}
 		for(Event event : events) {
 			Date startTime = sdf.parse(event.getStartAt());
 			Date endTime = sdf.parse(event.getEndAt());

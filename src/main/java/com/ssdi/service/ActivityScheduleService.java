@@ -58,24 +58,31 @@ public class ActivityScheduleService implements IActivityScheduleService {
 		List<String> venueTimeSlots = venueService.getVenueTimes(venueId);
 		DayOfWeek dayWeek = dayofweekService.findById(day);
 		List<ActivitySchedule> activities = activityScheduleDao.findByDayAndVenueId(dayWeek, venueId); 
-		
 		DateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+		if(activities.size() == 0) {
+			for(String time : venueTimeSlots) {
+				Date availTime = sdf.parse(time);
+					result.add(availTime.getHours());
+				
+			}
+		}
 		for(ActivitySchedule act : activities) {
 			Date startTime = sdf.parse(act.getStart_at());
 			Date endTime = sdf.parse(act.getEnd_at());
 			for(String time : venueTimeSlots) {
 				Date availTime = sdf.parse(time);
+				System.out.println(availTime.getHours() +" < " +startTime.getHours() );
 				if(availTime.getHours() < startTime.getHours() || availTime.getHours() >= endTime.getHours()) {
 					result.add(availTime.getHours());
 				}
 			}
 		}
+		
 		return result;
 	}
 	@Override
 	public void save(ActivitySchedule activitySchedule) {
 		activityScheduleDao.save(activitySchedule);
-		
 	}
 		
 	
