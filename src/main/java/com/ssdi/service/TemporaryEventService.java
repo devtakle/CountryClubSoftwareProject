@@ -69,6 +69,9 @@ public class TemporaryEventService {
 				}
 			}
 		}
+		if(result.get(result.size() - 1) - 1 != result.get(result.size() - 2)) {
+			result.remove(result.size() - 1);
+		}
 		return result;
 	}
 	
