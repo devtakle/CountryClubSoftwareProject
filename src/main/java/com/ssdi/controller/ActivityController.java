@@ -50,14 +50,13 @@ public class ActivityController {
 		}
 	}
 	@RequestMapping(value="activities",method = RequestMethod.GET,produces="application/json")
-	public List<ActivityDto> getAllActivities(@RequestHeader(value="token") String token){
+	public List<ActivityDto> getAllActivities(@RequestHeader(value="token") String token) throws NotLoggedInException{
 		
 		if(memberLoginService.isValidToken(token)) {
 			return activityService.getAllActivities();
 		}
 		else {
-			System.out.println("null");
-			return null;
+			throw new NotLoggedInException("You are not logged in");
 		}
 	}
 	@RequestMapping(value="activities/{day}/{venue}",method = RequestMethod.GET)
