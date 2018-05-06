@@ -57,6 +57,7 @@ public class TemporaryEventService {
 					result.add(availTime.getHours());
 				
 			}
+			return result;
 		}
 		for(Event event : events) {
 			Date startTime = sdf.parse(event.getStartAt());
@@ -70,7 +71,7 @@ public class TemporaryEventService {
 		}
 		return result;
 	}
-
+	
 	public List<TemporaryEvent> getAll(){
 		return temporaryEventDao.findAll();
 	}

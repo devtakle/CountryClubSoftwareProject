@@ -65,6 +65,7 @@ public class ActivityScheduleService implements IActivityScheduleService {
 					result.add(availTime.getHours());
 				
 			}
+			return result;
 		}
 		for(ActivitySchedule act : activities) {
 			Date startTime = sdf.parse(act.getStart_at());
