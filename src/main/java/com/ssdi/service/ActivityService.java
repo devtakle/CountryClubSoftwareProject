@@ -24,5 +24,9 @@ public class ActivityService implements IActivityService {
 		activityDao = activityDao2;
 		
 	}
+	@Override
+	public Activity findById(int id) {
+		return activityDao.findOne(id);
+	}
 
 }

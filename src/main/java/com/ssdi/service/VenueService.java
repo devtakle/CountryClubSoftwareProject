@@ -43,6 +43,9 @@ public class VenueService implements IVenueService {
 	public VenueDao getVenueDao() {
 		return venueDao;
 	}
+	public Venue findById(int id) {
+		return venueDao.findOne(id);
+	}
 
 	public void setVenueDao(VenueDao venueDao) {
 		this.venueDao = venueDao;

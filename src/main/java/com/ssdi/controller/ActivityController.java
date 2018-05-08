@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ssdi.service.DayOfWeekService;
 import com.ssdi.service.IActivityScheduleService;
 import com.ssdi.service.IActivityService;
 import com.ssdi.service.IManagerLoginService;
 import com.ssdi.service.IMemberLoginService;
+import com.ssdi.service.VenueService;
 import com.ssdi.utilities.NotLoggedInException;
 import com.ssdi.dto.ActivityDto;
 import com.ssdi.dto.ActivityScheduleDto;
@@ -31,6 +33,11 @@ public class ActivityController {
 	private IActivityService activityService;
 	@Autowired
 	IManagerLoginService managerLoginService;
+	@Autowired
+	DayOfWeekService dayOfWeekService;
+	@Autowired
+	VenueService venueService;
+
 
 	public void setMemberLoginService(IMemberLoginService memberLoginService) {
 		this.memberLoginService = memberLoginService;
@@ -71,9 +78,13 @@ public class ActivityController {
 			throw new NotLoggedInException("You are not logged in");
 		}
 	}
-	@RequestMapping(value="/addActivitySchedule",method = RequestMethod.GET)
-	public void addActivitySchedule(@RequestBody ActivitySchedule activitySchedule, @RequestHeader("token") String token) throws NotLoggedInException{
+	@RequestMapping(value="/addActivitySchedule/dayId/venueId/activityId",method = RequestMethod.GET)
+	public void addActivitySchedule(@PathVariable(value="dayId") int dayId,@PathVariable(value="venueId") int venueId,
+			@PathVariable(value="activityId") int actId,@RequestBody ActivitySchedule activitySchedule, @RequestHeader("token") String token) throws NotLoggedInException{
 		if(managerLoginService.isValidToken(token)) {
+			activitySchedule.setDay(dayOfWeekService.findById(dayId));
+			activitySchedule.setVenue(venueService.findById(venueId));
+			activitySchedule.setActivity(activityService.findById(actId));
 			activitySchedule.setActivity_capacity(0);
 			actScheduleService.save(activitySchedule);
 		}

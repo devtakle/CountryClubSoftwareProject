@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.ssdi.dao.ManagerLoginDao;
 import com.ssdi.dao.MemberLoginDao;
 import com.ssdi.model.ManagerLogin;
+import com.ssdi.model.MemberLogin;
 
 @Service
 public class ManagerLoginService implements IManagerLoginService {
@@ -40,14 +41,21 @@ public class ManagerLoginService implements IManagerLoginService {
 		managerLogin.setToken(token);
 		managerLoginDAO.save(managerLogin);
 	}
+//	public void logout(String token){
+//		ManagerLogin managerLogin = new ManagerLogin();
+//		if(token.equals(managerLoginDAO.findAll().iterator().next().getToken())){
+//			managerLogin = managerLoginDAO.findAll().iterator().next();
+//			managerLogin.setToken("");
+//			managerLoginDAO.save(managerLogin);
+//			System.out.println("username-->"+managerLogin.getEmail()+" password--->"+managerLogin.getPassword()+ " token--->"+managerLogin.getToken());
+//		}
+//	}
 	public void logout(String token){
 		ManagerLogin managerLogin = new ManagerLogin();
-		if(token.equals(managerLoginDAO.findAll().iterator().next().getToken())){
-			managerLogin = managerLoginDAO.findAll().iterator().next();
-			managerLogin.setToken("");
-			managerLoginDAO.save(managerLogin);
-			System.out.println("username-->"+managerLogin.getEmail()+" password--->"+managerLogin.getPassword()+ " token--->"+managerLogin.getToken());
-		}
+		managerLogin = managerLoginDAO.findByToken(token);
+		managerLogin.setToken("");
+		managerLoginDAO.save(managerLogin);
+		
 	}
 	@Override
 	public boolean isValidToken(String token) {

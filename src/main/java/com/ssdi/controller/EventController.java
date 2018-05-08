@@ -65,11 +65,13 @@ public class EventController {
 	public void setMemberService(MemberService memberService) {
 		this.memberService = memberService;
 	}
-	@RequestMapping(value ="/tempEventAdd",method= RequestMethod.POST)
+	@RequestMapping(value ="/tempEventAdd/{venueId}",method= RequestMethod.POST)
 	public TemporaryEvent addTemporaryEvent(@RequestBody TemporaryEvent temporaryEvent, 
-			@RequestHeader(value="token") String token) throws NotLoggedInException {
+			@RequestHeader(value="token") String token, @PathVariable(value="venueId") int venueId) throws NotLoggedInException {
 		if(memberLoginService.isValidToken(token)) {
 		int id = memberLoginService.findMemberId(token);
+		Venue venue = venueService.findById(venueId);
+		temporaryEvent.setVenue(venue);
 		temporaryEvent.setMember(memberService.getById(id));
 		return tempService.addEvent(temporaryEvent);
 		}

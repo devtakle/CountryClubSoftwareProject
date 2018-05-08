@@ -3,7 +3,7 @@ package com.ssdi.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ssdi.dao.MemberDao;
+
 import com.ssdi.dao.MemberLoginDao;
 import com.ssdi.model.MemberLogin;
 
@@ -40,14 +40,21 @@ public class MemberLoginService implements IMemberLoginService {
 		memberLogin.setToken(token);
 		memberLoginDAO.save(memberLogin);
 	}
+//	public void logout(String token){
+//		MemberLogin memberLogin = new MemberLogin();
+//		if(token.equals(memberLoginDAO.findAll().iterator().next().getToken())){
+//			memberLogin = memberLoginDAO.findAll().iterator().next();
+//			memberLogin.setToken("");
+//			memberLoginDAO.save(memberLogin);
+//			System.out.println("username-->"+memberLogin.getEmail()+" password--->"+memberLogin.getPassword()+ " token--->"+memberLogin.getToken());
+//		}
+//	}
 	public void logout(String token){
 		MemberLogin memberLogin = new MemberLogin();
-		if(token.equals(memberLoginDAO.findAll().iterator().next().getToken())){
-			memberLogin = memberLoginDAO.findAll().iterator().next();
-			memberLogin.setToken("");
-			memberLoginDAO.save(memberLogin);
-			System.out.println("username-->"+memberLogin.getEmail()+" password--->"+memberLogin.getPassword()+ " token--->"+memberLogin.getToken());
-		}
+		memberLogin = memberLoginDAO.findByToken(token);
+		memberLogin.setToken("");
+		memberLoginDAO.save(memberLogin);
+		
 	}
 	@Override
 	public boolean isValidToken(String token) {
