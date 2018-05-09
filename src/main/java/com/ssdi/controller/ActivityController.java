@@ -78,10 +78,11 @@ public class ActivityController {
 			throw new NotLoggedInException("You are not logged in");
 		}
 	}
-	@RequestMapping(value="/addActivitySchedule/dayId/venueId/activityId",method = RequestMethod.POST)
+	@RequestMapping(value="addActivitySchedule/{dayId}/{venueId}/{activityId}",method = RequestMethod.POST)
 	public void addActivitySchedule(@PathVariable(value="dayId") int dayId,@PathVariable(value="venueId") int venueId,
 			@PathVariable(value="activityId") int actId,@RequestBody ActivitySchedule activitySchedule, @RequestHeader("token") String token) throws NotLoggedInException{
 		if(managerLoginService.isValidToken(token)) {
+			System.out.println(activitySchedule.getEnd_at());
 			activitySchedule.setDay(dayOfWeekService.findById(dayId));
 			activitySchedule.setVenue(venueService.findById(venueId));
 			activitySchedule.setActivity(activityService.findById(actId));
