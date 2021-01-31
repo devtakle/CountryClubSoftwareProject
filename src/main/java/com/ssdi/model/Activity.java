@@ -10,6 +10,7 @@ public class Activity {
 	private int id;
     @Column
     private String activity_name;
+
     @OneToOne
     @JoinColumn(name="category_id", referencedColumnName="id")
     private Category categoryNname;
@@ -34,7 +35,6 @@ public class Activity {
     
 	
 
-	
 
 
 }

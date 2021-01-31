@@ -3,6 +3,7 @@ package com.ssdi.dto;
 public class ActivityDto {
     private Integer activityId;
     private String activityName;
+
     private String category_Name;
     
     	public Integer getActivityId() {
@@ -28,6 +29,11 @@ public class ActivityDto {
 		this.activityId = activityId;
 		this.activityName = activityName;
 		this.category_Name = category_Name;
+	}
+	public ActivityDto(int id, String activity_name) {
+		this.activityId= id;
+		this.activityName = activity_name;
+	    
 	}
 	
 }

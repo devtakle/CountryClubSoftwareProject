@@ -14,7 +14,7 @@ public class DayOfWeek {
 		private int id;
 	    @Column
 	    private String day_of_week;
-	    
+	   
 		public int getId() {
 			return id;
 		}

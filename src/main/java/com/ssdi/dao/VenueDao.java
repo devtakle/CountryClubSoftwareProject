@@ -7,4 +7,5 @@ import com.ssdi.model.Venue;
 
 @Repository
 public interface VenueDao extends JpaRepository<Venue, Integer>{
+	
 }

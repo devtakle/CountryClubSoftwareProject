@@ -8,6 +8,7 @@ public interface IMemberLoginService {
 	boolean isValidUser(String username);
 
 	String fetchPassword(String username);
+	int findMemberId(String token);
 
 
 	void saveToken(String token, String username);

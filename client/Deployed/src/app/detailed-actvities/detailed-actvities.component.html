@@ -1,0 +1,41 @@
+<div class="row  " >
+  <ul class="nav">
+    <li class="nav-item"  >
+      <a class="nav-link" routerLink="/menu" >Home</a>
+    </li>
+  <li class="nav-item"  >
+    <a class="nav-link " routerLink="/logout" >Logout</a>
+  </li>
+</ul>
+</div>
+<table class ="table">
+  <tr>
+  <th>Activity name</th>
+  <th>Venue name</th>
+    <th>Day of week</th>
+    <th>Start time</th>
+    <th>End time</th>
+</tr>
+<tr *ngFor="let activity of detailedActivities">
+      <th>{{activity.activitiy_name}}</th>
+      <th>{{activity.venue_name}}</th>
+      <th>{{activity.day_of_week}}</th>
+      <th>{{activity.start_at}}</th>
+      <th>{{activity.end_at}}</th>
+      <th><button type="submit" name="button"
+        class="btn btn-success" (click)="register(activity.id)">Register</button></th>
+    </tr>
+
+</table>
+<div *ngIf="toShowRegistered"  >
+    <span class="alert alert-success">You are registered for the activity</span>
+    <span class=""></span>
+    <span><button type="submit" name="button"
+      class="btn btn-success" (click)="onSuccess()">OK</button></span>
+</div>
+<div *ngIf="toShowAlreadyRegistered" class="alert alert-danger">
+    You are already registered for this activity
+</div>
+<div *ngIf="toShowNoSpaceLeft" class="alert alert-danger">
+    No space left for this activity
+</div>

@@ -8,9 +8,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.ssdi.model.ActivitySchedule;
+import com.ssdi.model.DayOfWeek;
 @Repository("activityScheduleDao")
 public interface ActivityScheduleDao extends JpaRepository<ActivitySchedule, Integer> {
 	public List<ActivitySchedule> findByActivityId(int activity_id);
+	public List<ActivitySchedule> findByDayAndVenueId(DayOfWeek dayOfWeek, int venueId);
 	
-
 }

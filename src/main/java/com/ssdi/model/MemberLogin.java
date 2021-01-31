@@ -10,6 +10,7 @@ public class MemberLogin {
 	@Column(name = "id")
 	private int id;
 	@Id
+	//@Column(name = "username")
 	@Column(name = "email")
 	private String email;
 	@Column(name = "pass")
